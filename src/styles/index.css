@@ -1,5 +1,6 @@
 @import url(./CardTable.css);
 @import url(./CurrentRound.css);
+@import url(./HeaderFooter.css);
 
 *,
 *::before,
@@ -21,6 +22,31 @@ button {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+}
+
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#root > * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (prefers-color-scheme: light) {

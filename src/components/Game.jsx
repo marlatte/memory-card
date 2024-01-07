@@ -9,7 +9,9 @@ function Game({ mode }) {
   return (
     <div className="game-container">
       <Header mode={mode} highScore={highScore} />
-      <CurrentRound players={names} score="3" />
+      <main>
+        <CurrentRound players={names} score="3" />
+      </main>
       <Footer />
     </div>
   );

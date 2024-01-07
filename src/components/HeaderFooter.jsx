@@ -6,8 +6,14 @@ export function Header({ mode, highScore }) {
     <header>
       <h1>Ted&apos;s Starting 11</h1>
       <div className="game-info">
-        <p className="current-mode">Mode: {_.capitalize(mode)}</p>
-        <p className="high-score">High Score: {highScore}</p>
+        <p className="current-mode">
+          <span className="static-text">Game Mode:</span>{' '}
+          <span className="variable-text">{_.capitalize(mode)}</span>
+        </p>
+        <p className="high-score">
+          <span className="static-text">High Score:</span>{' '}
+          <span className="variable-text">{highScore}</span>
+        </p>
       </div>
     </header>
   );

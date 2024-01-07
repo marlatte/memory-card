@@ -11,7 +11,7 @@ function CurrentRound({ score, players }) {
 }
 
 function Score({ score }) {
-  return <div className="score">{score}/11</div>;
+  return <div className="score">{score} / 11</div>;
 }
 
 export default CurrentRound;
