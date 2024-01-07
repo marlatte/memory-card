@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import Card from './Card';
 
-function CardTable({ names }) {
+function CardTable({ players }) {
   return (
     <div className="card-table">
-      {names.map((name, index) => (
+      {players.map((player, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Card key={index} name={name} />
+        <Card key={index} player={player} />
       ))}
     </div>
   );

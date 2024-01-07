@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
 
-function Card({ name }) {
+function Card({ player }) {
   return (
     <button
       type="button"
       className="card"
       onClick={() => {
-        console.log(name);
+        console.log(player);
       }}
     >
       <img
         src="https://picsum.photos/200/300"
-        alt={name}
+        alt={player}
         className="player-pic"
       />
-      <div className="player-name">{name}</div>
+      <div className="player-player">{player}</div>
     </button>
   );
 }
