@@ -10,6 +10,10 @@
   color: unset;
 }
 
+button {
+  cursor: pointer;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;

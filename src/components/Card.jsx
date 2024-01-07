@@ -14,7 +14,7 @@ function Card({ player }) {
         alt={player}
         className="player-pic"
       />
-      <div className="player-player">{player}</div>
+      <div className="player-name">{player}</div>
     </button>
   );
 }
