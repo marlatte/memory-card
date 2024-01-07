@@ -1,0 +1,21 @@
+.card {
+  --radius: 10px;
+
+  padding: 8px;
+
+  border: 2px solid currentColor;
+  border-radius: var(--radius);
+  background-color: darkcyan;
+}
+
+.player-pic {
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 6px #042525;
+}
+
+.player-name {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
