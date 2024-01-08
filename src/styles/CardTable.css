@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -23,6 +24,7 @@
 }
 
 .character-pic {
+  height: 25svh;
   border-radius: var(--radius);
   box-shadow: 3px 3px 6px #042525;
 }

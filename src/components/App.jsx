@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import Game from './Game';
 
 function App() {
-  const mode = 'easy';
-  return <Game mode={mode} />;
+  const [highScore, setHighScore] = useState(0);
+  const [mode, setMode] = useState('easy');
+
+  const checkNewHighScore = (score) => {
+    if (score > highScore) setHighScore(score);
+  };
+
+  return (
+    <Game
+      mode={mode}
+      highScore={highScore}
+      checkNewHighScore={checkNewHighScore}
+    />
+  );
 }
 
 export default App;
@@ -11,9 +24,9 @@ export default App;
 Planning:
 
 Game modes:
-- Easy: 5 cards
-- Medium: 12 cards
-- Hard: 20 cards
+- Easy: 4 cards
+- Medium: 8 cards
+- Hard: 15 cards
 
 Components:
 - App

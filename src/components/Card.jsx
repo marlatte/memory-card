@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 
-function Card({ character }) {
+function Card({ character, onClick }) {
   return (
     <button
       type="button"
       className="card"
-      onClick={() => {
-        console.log(character.name);
-      }}
+      onClick={onClick}
+      data-character-id={character.id}
     >
       <img src={character.img} alt={character.name} className="character-pic" />
       <div className="character-name">{character.name}</div>
