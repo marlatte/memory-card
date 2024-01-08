@@ -7,7 +7,7 @@ const characters = await getCharacters();
 
 const sampleCharacters = [];
 for (let i = 0; i < 4; i += 1) {
-  sampleCharacters.push(characters[i].name);
+  sampleCharacters.push(characters[i + 6]);
 }
 
 function Game({ mode }) {

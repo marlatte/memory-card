@@ -22,12 +22,12 @@
   transform: scale(1.06);
 }
 
-.player-pic {
+.character-pic {
   border-radius: var(--radius);
   box-shadow: 3px 3px 6px #042525;
 }
 
-.player-name {
+.character-name {
   margin-top: 5px;
   font-size: 20px;
   font-weight: bold;

@@ -5,7 +5,8 @@ async function getCharacters() {
   return castArray.map((item) => ({
     name: item.character.name,
     id: item.character.id,
-    img: item.person.image.medium,
+    img: item[item.character.id === 773340 ? 'person' : 'character'].image
+      .medium,
   }));
 }
 
