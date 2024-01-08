@@ -3,7 +3,10 @@ import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
 import characters from './characters';
 
-const sampleCharacters = [characters[0].name, characters[1].name];
+const sampleCharacters = [];
+for (let i = 0; i < 5; i += 1) {
+  sampleCharacters.push(characters[i].name);
+}
 
 function Game({ mode }) {
   const highScore = 6;
