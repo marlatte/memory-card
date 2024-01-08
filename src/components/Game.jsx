@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
+import characters from './characters';
 
-const names = ['Ted', 'Beard', 'Danny', 'Roy'];
+const sampleCharacters = [characters[0].name, characters[1].name];
 
 function Game({ mode }) {
   const highScore = 6;
@@ -10,7 +11,7 @@ function Game({ mode }) {
     <div className="game-container">
       <Header mode={mode} highScore={highScore} />
       <main>
-        <CurrentRound players={names} score="3" />
+        <CurrentRound characters={sampleCharacters} score="3" />
       </main>
       <Footer />
     </div>

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import CardTable from './CardTable';
 
-function CurrentRound({ score, players }) {
+function CurrentRound({ score, characters }) {
   return (
     <div className="current-round">
-      <CardTable players={players} />
+      <CardTable characters={characters} />
       <Score score={score} />
     </div>
   );
