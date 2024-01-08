@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
-import characters from './characters';
+import getCharacters from './characters';
+
+const characters = await getCharacters();
 
 const sampleCharacters = [];
-for (let i = 0; i < 5; i += 1) {
+for (let i = 0; i < 4; i += 1) {
   sampleCharacters.push(characters[i].name);
 }
 

@@ -1,27 +1,12 @@
-const characters = [
-  { name: 'Roy Kent', gifId: 'NpR31YUZcA8Vn0D9Yp' },
-  { name: 'Keeley Jones', gifId: 'WOZpnWPVDNVVegewft' },
-  { name: 'Jamie Tartt', gifId: 'L0BQqm9GfFenNk4Flo' },
-  { name: 'Rebecca Welton', gifId: 'OTWqf8dClBB2Iwnfu3' },
-  { name: 'Coach Beard', gifId: '9YGRceunSISFPxpFek' },
-  { name: 'Zava', gifId: '' },
-  { name: 'Dani Rojas', gifId: '' },
-  { name: 'Trent Crimm', gifId: '' },
-  { name: 'Sam Obisanya', gifId: '' },
-  { name: 'Bumbercatch', gifId: '' },
-  { name: 'Bex', gifId: '' },
-  { name: 'Edwin Akufo', gifId: '' },
-  { name: 'Nathan Shelley', gifId: 'TzgZVz37F18BGZm6uI' },
-  { name: 'Rupert Mannion', gifId: '' },
-  { name: 'Leslie Higgins', gifId: '' },
-  { name: 'Isaac McAdoo', gifId: '' },
-  { name: 'Jan Maas', gifId: '' },
-  { name: 'Phoebe', gifId: '' },
-  { name: 'Colin Hughes', gifId: '' },
-  { name: 'Ted Lasso', gifId: '3WCNY2RhcmnwGbKbCi' },
-  { name: 'Flo "Sassy" Collins', gifId: '' },
-  { name: 'Dr. Sharon Fieldstone', gifId: '' },
-  { name: 'Thierry Zoreaux', gifId: '' },
-];
+async function getCharacters() {
+  const response = await fetch('https://api.tvmaze.com/shows/44458/cast');
+  const castArray = await response.json();
 
-export default characters;
+  return castArray.map((item) => ({
+    name: item.character.name,
+    id: item.character.id,
+    img: item.person.image.medium,
+  }));
+}
+
+export default getCharacters;
