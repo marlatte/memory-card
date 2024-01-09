@@ -1,0 +1,21 @@
+.start .content {
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.start h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.start .buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.start button {
+  flex: 1;
+
+  font-size: 1.3rem;
+}

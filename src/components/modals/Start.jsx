@@ -10,13 +10,22 @@ function StartModal({ setMode, setStart }) {
   };
 
   return (
-    <section className="modal">
-      <h1>Lasso Locker Room</h1>
-      {['easy', 'medium', 'hard'].map((word) => (
-        <button key={word} id={word} type="button" onClick={handleModeClick}>
-          {capitalize(word)}
-        </button>
-      ))}
+    <section className="modal start">
+      <div className="content">
+        <h1>Ted&apos;s Starting Eleven</h1>
+        <div className="buttons">
+          {['easy', 'medium', 'hard'].map((word) => (
+            <button
+              key={word}
+              id={word}
+              type="button"
+              onClick={handleModeClick}
+            >
+              {capitalize(word)}
+            </button>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

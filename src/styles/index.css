@@ -1,6 +1,7 @@
 @import url(./CardTable.css);
 @import url(./CurrentRound.css);
 @import url(./HeaderFooter.css);
+@import url(./Start.css);
 
 *,
 *::before,
@@ -38,6 +39,14 @@ body {
 
 #root > * {
   flex: 1;
+}
+
+.modal {
+  display: grid;
+  place-content: center;
+}
+
+.game-container {
   display: flex;
   flex-direction: column;
 }
