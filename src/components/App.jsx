@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import Game from './Game';
+import Game from './game/Game';
 
 function App() {
   const [highScore, setHighScore] = useState(0);
   const [mode, setMode] = useState('easy');
+  const [start, setStart] = useState(true);
 
   const checkNewHighScore = (score) => {
     if (score > highScore) setHighScore(score);
