@@ -1,24 +1,37 @@
 import { useState } from 'react';
 import Game from './game/Game';
 import StartModal from './modals/Start';
+import EndModal from './modals/End';
 
 function App() {
+  const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [level, setLevel] = useState('');
-  const [screen, setScreen] = useState('start');
+  const [level, setLevel] = useState('easy');
+  const [start, setStart] = useState(true);
+  const [end, setEnd] = useState(false);
 
-  const checkNewHighScore = (score) => {
-    if (score > highScore) setHighScore(score);
+  const restart = () => {
+    setEnd(false);
+    setScore(0);
+    setStart(true);
   };
 
-  return screen === 'start' ? (
-    <StartModal setScreen={setScreen} setLevel={setLevel} />
-  ) : (
-    <Game
-      level={level}
-      highScore={highScore}
-      checkNewHighScore={checkNewHighScore}
-    />
+  return (
+    <>
+      {start ? (
+        <StartModal setStart={setStart} setLevel={setLevel} />
+      ) : (
+        <Game
+          level={level}
+          score={score}
+          setScore={setScore}
+          highScore={highScore}
+          setHighScore={setHighScore}
+          setEnd={setEnd}
+        />
+      )}
+      {end && <EndModal score={score} onClick={restart} />}
+    </>
   );
 }
 

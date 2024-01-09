@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { capitalize } from 'lodash';
 
-function StartModal({ setLevel, setScreen }) {
+function StartModal({ setLevel, setStart }) {
   const handleLevelClick = (e) => {
     const newLevel = e.target.id;
 
     setLevel(newLevel);
-    setScreen('game');
+    setStart(false);
   };
 
   return (

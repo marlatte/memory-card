@@ -11,8 +11,7 @@ for (let i = 0; i < 5; i += 1) {
   sampleCharacters.push(characters[i]);
 }
 
-function Game({ level, highScore, checkNewHighScore }) {
-  const [score, setScore] = useState(0);
+function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
   const [pastClickedIds, setPastClickedIds] = useState([]);
 
   const handleCardClick = (e) => {
@@ -23,7 +22,9 @@ function Game({ level, highScore, checkNewHighScore }) {
       setPastClickedIds(pastClickedIds.concat(clickedId));
       const newScore = score + 1;
       setScore(newScore);
-      checkNewHighScore(newScore);
+      if (newScore > highScore) setHighScore(newScore);
+    } else {
+      setEnd(true);
     }
   };
 
