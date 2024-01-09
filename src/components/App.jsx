@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Game from './game/Game';
+import StartModal from './modals/Start';
 
 function App() {
   const [highScore, setHighScore] = useState(0);
@@ -10,7 +11,9 @@ function App() {
     if (score > highScore) setHighScore(score);
   };
 
-  return (
+  return start ? (
+    <StartModal setStart={setStart} setMode={setMode} />
+  ) : (
     <Game
       mode={mode}
       highScore={highScore}
