@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import { capitalize } from 'lodash';
 
-export function Header({ mode, highScore }) {
+export function Header({ level, highScore }) {
   return (
     <header>
       <h1>Ted&apos;s Starting Eleven</h1>
       <div className="game-info">
-        <p className="current-mode">
+        <p className="current-level">
           <span className="static-text">Game Mode:</span>{' '}
-          <span className="variable-text">{capitalize(mode)}</span>
+          <span className="variable-text">{capitalize(level)}</span>
         </p>
         <p className="high-score">
           <span className="static-text">High Score:</span>{' '}

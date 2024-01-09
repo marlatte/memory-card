@@ -9,7 +9,7 @@ header {
   font-size: 20px;
 }
 
-.current-mode,
+.current-level,
 .high-score {
   margin: 10px;
   display: flex;

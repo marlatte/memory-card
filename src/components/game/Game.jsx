@@ -11,7 +11,7 @@ for (let i = 0; i < 5; i += 1) {
   sampleCharacters.push(characters[i]);
 }
 
-function Game({ mode, highScore, checkNewHighScore }) {
+function Game({ level, highScore, checkNewHighScore }) {
   const [score, setScore] = useState(0);
   const [pastClickedIds, setPastClickedIds] = useState([]);
 
@@ -29,7 +29,7 @@ function Game({ mode, highScore, checkNewHighScore }) {
 
   return (
     <div className="game-container">
-      <Header mode={mode} highScore={highScore} />
+      <Header level={level} highScore={highScore} />
       <main>
         <CurrentRound
           characters={sampleCharacters}

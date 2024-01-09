@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { capitalize } from 'lodash';
 
-function StartModal({ setMode, setStart }) {
-  const handleModeClick = (e) => {
-    const selectedMode = e.target.id;
+function StartModal({ setLevel, setScreen }) {
+  const handleLevelClick = (e) => {
+    const newLevel = e.target.id;
 
-    setMode(selectedMode);
-    setStart(false);
+    setLevel(newLevel);
+    setScreen('game');
   };
 
   return (
@@ -19,7 +19,7 @@ function StartModal({ setMode, setStart }) {
               key={word}
               id={word}
               type="button"
-              onClick={handleModeClick}
+              onClick={handleLevelClick}
             >
               {capitalize(word)}
             </button>

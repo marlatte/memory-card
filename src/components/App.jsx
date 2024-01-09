@@ -4,18 +4,18 @@ import StartModal from './modals/Start';
 
 function App() {
   const [highScore, setHighScore] = useState(0);
-  const [mode, setMode] = useState('easy');
-  const [start, setStart] = useState(true);
+  const [level, setLevel] = useState('');
+  const [screen, setScreen] = useState('start');
 
   const checkNewHighScore = (score) => {
     if (score > highScore) setHighScore(score);
   };
 
-  return start ? (
-    <StartModal setStart={setStart} setMode={setMode} />
+  return screen === 'start' ? (
+    <StartModal setScreen={setScreen} setLevel={setLevel} />
   ) : (
     <Game
-      mode={mode}
+      level={level}
       highScore={highScore}
       checkNewHighScore={checkNewHighScore}
     />
