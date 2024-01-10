@@ -9,7 +9,8 @@ const allCharacters = await getCharacters();
 function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
   const [pastClickedIds, setPastClickedIds] = useState([]);
 
-  const levelMap = { easy: 5, medium: 10, hard: 15 };
+  const levelDisplay = { easy: 5, medium: 10, hard: 15 };
+  const levelWin = { easy: 7, medium: 11, hard: 15 };
 
   function getFirstOption() {
     const viableOptions = allCharacters.filter(
@@ -22,7 +23,7 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
     const preDisplay = [];
     preDisplay.push(getFirstOption());
 
-    while (preDisplay.length < levelMap[level]) {
+    while (preDisplay.length < levelDisplay[level]) {
       const num = Math.floor(Math.random() * 15);
       if (!preDisplay.includes(allCharacters[num])) {
         preDisplay.push(allCharacters[num]);
@@ -41,7 +42,7 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
       const newScore = score + 1;
       setScore(newScore);
       if (newScore > highScore) setHighScore(newScore);
-      if (newScore === 11) setEnd(true);
+      if (newScore >= levelWin[level]) setEnd(true);
     } else {
       setEnd(true);
     }
@@ -54,6 +55,7 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
         <CurrentRound
           characters={getCards()}
           score={score}
+          winScore={levelWin[level]}
           onClick={handleCardClick}
         />
       </main>

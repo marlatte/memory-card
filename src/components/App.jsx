@@ -36,26 +36,3 @@ function App() {
 }
 
 export default App;
-
-/*
-Planning:
-
-Game modes:
-- Easy: 4 cards
-- Medium: 8 cards
-- Hard: 15 cards
-
-Components:
-- App
-  - StartModal
-  - Game
-    - Header
-      - HighScore
-    - CurrentRound
-      - CardTable
-        - Card
-      - Score
-    - Footer
-  - EndModal
-
-*/
