@@ -10,27 +10,37 @@
 .card {
   --radius: 10px;
 
+  width: 16vw;
   padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 
   border: 2px solid currentColor;
   border-radius: var(--radius);
-  background-color: darkcyan;
+  background-color: #242424dc;
 
   transition: all 0.2s;
 }
 
-.card:hover {
+.card:hover,
+.card:focus {
   transform: scale(1.06);
 }
 
 .character-pic {
-  height: 25svh;
+  width: 100%;
   border-radius: var(--radius);
   box-shadow: 3px 3px 6px #042525;
 }
 
 .character-name {
-  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
   font-size: 20px;
   font-weight: bold;
   text-align: center;
