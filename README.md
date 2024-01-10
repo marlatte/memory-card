@@ -10,4 +10,4 @@ Built with React, this project developed my skills with:
 
 Full requirements from The Odin Project can be [found here](https://www.theodinproject.com/lessons/node-path-react-new-memory-card).
 
-👉 [Live Demo](#) 👈
+👉 [Live Demo](https://marlatte-memory-card.netlify.app/) 👈
