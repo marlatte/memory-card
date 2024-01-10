@@ -18,10 +18,6 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
     return viableOptions[Math.floor(Math.random() * viableOptions.length)];
   }
 
-  function shuffleCards(unShuffled) {
-    return unShuffled;
-  }
-
   function getCards() {
     const preDisplay = [];
     preDisplay.push(getFirstOption());
@@ -33,15 +29,15 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
       }
     }
 
-    return shuffleCards(preDisplay);
+    return preDisplay.sort(() => 0.5 - Math.random());
   }
 
   const handleCardClick = (e) => {
-    const clickedId = e.target.closest('[data-character-id]').dataset
+    const clickedId = +e.target.closest('[data-character-id]').dataset
       .characterId;
 
     if (!pastClickedIds.includes(clickedId)) {
-      setPastClickedIds(pastClickedIds.concat(+clickedId));
+      setPastClickedIds(pastClickedIds.concat(clickedId));
       const newScore = score + 1;
       setScore(newScore);
       if (newScore > highScore) setHighScore(newScore);
