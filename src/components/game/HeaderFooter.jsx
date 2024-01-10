@@ -22,16 +22,18 @@ export function Header({ level, highScore }) {
 export function Footer() {
   return (
     <footer>
-      <p>Walker</p>
-      <a
-        href="https://github.com/marlatte"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Marlatte's Github"
-      >
-        <i className="fa fa-github" />
-      </a>
-      <p>Marlatt</p>
+      <div className="content">
+        <p>Walker</p>
+        <a
+          href="https://github.com/marlatte"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Marlatte's Github"
+        >
+          <i className="fa fa-github" />
+        </a>
+        <p>Marlatt</p>
+      </div>
     </footer>
   );
 }
