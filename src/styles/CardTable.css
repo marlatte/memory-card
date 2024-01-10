@@ -11,7 +11,7 @@
   --radius: 10px;
 
   width: 16vw;
-  padding: 8px;
+  padding-bottom: 8px;
 
   display: flex;
   flex-direction: column;
@@ -20,7 +20,8 @@
 
   border: 2px solid currentColor;
   border-radius: var(--radius);
-  background-color: #242424dc;
+  background-color: var(--card-bg);
+  box-shadow: 3px 5px 6px #000000cc;
 
   transition: all 0.2s;
 }
@@ -32,8 +33,8 @@
 
 .character-pic {
   width: 100%;
-  border-radius: var(--radius);
-  box-shadow: 3px 3px 6px #042525;
+  border-radius: var(--radius) var(--radius) 0 0;
+  border-bottom: 2px solid #cfcfcf;
 }
 
 .character-name {

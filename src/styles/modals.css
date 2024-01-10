@@ -13,7 +13,7 @@
   padding: var(--spacer);
   border: 2px solid white;
   border-radius: 10px;
-  background-color: #242424dc;
+  background-color: var(--card-bg);
 }
 
 .modal h1 {
@@ -59,6 +59,7 @@
 }
 
 .end .content {
+  background-color: #1a1a1a;
   box-shadow: 4px 4px 10px #0000006e;
 }
 

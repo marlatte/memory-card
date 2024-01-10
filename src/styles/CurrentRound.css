@@ -10,5 +10,5 @@
   border-radius: 10px;
   font-size: 24px;
   text-align: center;
-  background-color: #242424dc;
+  background-color: var(--card-bg);
 }

@@ -17,6 +17,8 @@ button {
 }
 
 :root {
+  --card-bg: #1a1a1ae6;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
 

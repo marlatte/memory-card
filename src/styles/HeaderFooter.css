@@ -5,8 +5,15 @@ header {
   align-items: center;
 }
 
+header h1 {
+  text-shadow: 3px 5px 5px black;
+}
+
 .game-info {
   font-size: 20px;
+  background-color: var(--card-bg);
+  border: 1px solid #ffffff80;
+  border-radius: 10px;
 }
 
 .current-level,
