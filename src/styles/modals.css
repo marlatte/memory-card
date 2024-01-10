@@ -1,0 +1,66 @@
+.modal {
+  display: grid;
+  place-content: center;
+}
+
+.modal .content {
+  --spacer: 30px;
+
+  padding: var(--spacer);
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+/* --------------------------- */
+/* ---------- Start ---------- */
+/* --------------------------- */
+
+.start h1 {
+  margin-bottom: var(--spacer);
+  font-size: 2rem;
+}
+
+.start .buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.modal button {
+  flex: 1;
+
+  font-size: 1.3rem;
+}
+
+/* --------------------------- */
+/* ----------- End ----------- */
+/* --------------------------- */
+
+.end {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  background-color: rgba(212, 212, 212, 0.25);
+  backdrop-filter: blur(2px);
+}
+
+.end .content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  box-shadow: 4px 4px 10px #0000006e;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: #242424;
+}
+
+.end h1 {
+  font-size: 2.3rem;
+}
+
+.end p {
+  text-align: center;
+  font-size: 1.3rem;
+}
