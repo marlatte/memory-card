@@ -4,7 +4,10 @@ import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
 import getCharacters from './characters';
 
-const allCharacters = await getCharacters();
+let allCharacters;
+getCharacters().then((val) => {
+  allCharacters = val;
+});
 
 function Game({
   level,
