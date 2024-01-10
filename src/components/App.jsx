@@ -10,6 +10,8 @@ function App() {
   const [start, setStart] = useState(true);
   const [end, setEnd] = useState(false);
 
+  const levelWin = { easy: 7, medium: 11, hard: 15 };
+
   const restart = () => {
     setEnd(false);
     setScore(0);
@@ -28,9 +30,12 @@ function App() {
           highScore={highScore}
           setHighScore={setHighScore}
           setEnd={setEnd}
+          winScore={levelWin[level]}
         />
       )}
-      {end && <EndModal score={score} onClick={restart} />}
+      {end && (
+        <EndModal score={score} onClick={restart} winScore={levelWin[level]} />
+      )}
     </>
   );
 }

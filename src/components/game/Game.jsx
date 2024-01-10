@@ -6,11 +6,18 @@ import getCharacters from './characters';
 
 const allCharacters = await getCharacters();
 
-function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
+function Game({
+  level,
+  score,
+  setScore,
+  highScore,
+  setHighScore,
+  setEnd,
+  winScore,
+}) {
   const [pastClickedIds, setPastClickedIds] = useState([]);
 
   const levelDisplay = { easy: 5, medium: 10, hard: 15 };
-  const levelWin = { easy: 7, medium: 11, hard: 15 };
 
   function getFirstOption() {
     const viableOptions = allCharacters.filter(
@@ -42,7 +49,7 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
       const newScore = score + 1;
       setScore(newScore);
       if (newScore > highScore) setHighScore(newScore);
-      if (newScore >= levelWin[level]) setEnd(true);
+      if (newScore >= winScore) setEnd(true);
     } else {
       setEnd(true);
     }
@@ -55,7 +62,7 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
         <CurrentRound
           characters={getCards()}
           score={score}
-          winScore={levelWin[level]}
+          winScore={winScore}
           onClick={handleCardClick}
         />
       </main>
