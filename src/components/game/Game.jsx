@@ -11,28 +11,30 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
 
   const levelMap = { easy: 5, medium: 10, hard: 15 };
 
-  function getCards() {
-    const displayed = [];
-    let needsFirstOption = true;
+  function getFirstOption() {
+    const viableOptions = allCharacters.filter(
+      (char) => !pastClickedIds.includes(char.id)
+    );
+    return viableOptions[Math.floor(Math.random() * viableOptions.length)];
+  }
 
-    while (displayed.length < levelMap[level]) {
+  function shuffleCards(unShuffled) {
+    return unShuffled;
+  }
+
+  function getCards() {
+    const preDisplay = [];
+    preDisplay.push(getFirstOption());
+
+    while (preDisplay.length < levelMap[level]) {
       const num = Math.floor(Math.random() * 15);
-      if (!displayed.includes(allCharacters[num])) {
-        if (needsFirstOption) {
-          if (!pastClickedIds.includes(allCharacters[num].id)) {
-            displayed.push(allCharacters[num]);
-            needsFirstOption = false;
-          }
-        } else {
-          displayed.push(allCharacters[num]);
-        }
+      if (!preDisplay.includes(allCharacters[num])) {
+        preDisplay.push(allCharacters[num]);
       }
     }
 
-    return displayed;
+    return shuffleCards(preDisplay);
   }
-
-  const filteredCharacters = getCards();
 
   const handleCardClick = (e) => {
     const clickedId = e.target.closest('[data-character-id]').dataset
@@ -43,19 +45,18 @@ function Game({ level, score, setScore, highScore, setHighScore, setEnd }) {
       const newScore = score + 1;
       setScore(newScore);
       if (newScore > highScore) setHighScore(newScore);
+      if (newScore === 11) setEnd(true);
     } else {
       setEnd(true);
     }
   };
-
-  if (score === 11) setEnd(true);
 
   return (
     <div className="game-container">
       <Header level={level} highScore={highScore} />
       <main>
         <CurrentRound
-          characters={filteredCharacters}
+          characters={getCards()}
           score={score}
           onClick={handleCardClick}
         />
