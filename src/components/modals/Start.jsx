@@ -12,7 +12,7 @@ function StartModal({ setLevel, setStart }) {
   return (
     <section className="modal start">
       <div className="content">
-        <h1>Ted&apos;s Starting Eleven</h1>
+        <h1>Lasso&apos;s Starting Lineup</h1>
         <div className="buttons">
           {['easy', 'medium', 'hard'].map((word) => (
             <button

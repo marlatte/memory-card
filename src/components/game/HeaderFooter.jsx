@@ -4,7 +4,7 @@ import { capitalize } from 'lodash';
 export function Header({ level, highScore }) {
   return (
     <header>
-      <h1>Ted&apos;s Starting Eleven</h1>
+      <h1>Lasso&apos;s Starting Lineup</h1>
       <div className="game-info">
         <p className="current-level">
           <span className="static-text">Game Mode:</span>{' '}
