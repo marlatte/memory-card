@@ -1,87 +1,43 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
-import CurrentRound from './CurrentRound';
-import { Header, Footer } from './HeaderFooter';
-import getCharacters from './characters';
+import Mode from './Mode';
+import StartModal from '../modals/Start';
+import EndModal from '../modals/End';
 
-let allCharacters;
-getCharacters().then((val) => {
-  allCharacters = val;
-});
+function Game() {
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  const [level, setLevel] = useState('easy');
+  const [start, setStart] = useState(true);
+  const [end, setEnd] = useState(false);
 
-function Game({
-  level,
-  score,
-  setScore,
-  highScore,
-  setHighScore,
-  setEnd,
-  winScore,
-}) {
-  const [pastClickedIds, setPastClickedIds] = useState([]);
+  const levelWin = { easy: 7, medium: 11, hard: 15 };
 
-  const levelDisplay = { easy: 5, medium: 10, hard: 15 };
-
-  function getFirstOption() {
-    const viableOptions = allCharacters.filter(
-      (char) => !pastClickedIds.includes(char.id)
-    );
-    return viableOptions[Math.floor(Math.random() * viableOptions.length)];
-  }
-
-  function getCards() {
-    const preDisplay = [];
-    preDisplay.push(getFirstOption());
-
-    while (preDisplay.length < levelDisplay[level]) {
-      const num = Math.floor(Math.random() * 15);
-      if (!preDisplay.includes(allCharacters[num])) {
-        preDisplay.push(allCharacters[num]);
-      }
-    }
-
-    return preDisplay.sort(() => 0.5 - Math.random());
-  }
-
-  const handleCardClick = (e) => {
-    const clickedId = +e.target.closest('[data-character-id]').dataset
-      .characterId;
-
-    if (!pastClickedIds.includes(clickedId)) {
-      setPastClickedIds(pastClickedIds.concat(clickedId));
-      const newScore = score + 1;
-      setScore(newScore);
-      if (newScore > highScore) setHighScore(newScore);
-      if (newScore >= winScore) setEnd(true);
-    } else {
-      setEnd(true);
-    }
+  const restart = () => {
+    setEnd(false);
+    setScore(0);
+    setStart(true);
   };
 
   return (
-    <div className="game-container">
-      <Header level={level} highScore={highScore} />
-      <main>
-        <CurrentRound
-          characters={getCards()}
+    <>
+      {start ? (
+        <StartModal setStart={setStart} setLevel={setLevel} />
+      ) : (
+        <Mode
+          level={level}
           score={score}
-          winScore={winScore}
-          onClick={handleCardClick}
+          setScore={setScore}
+          highScore={highScore}
+          setHighScore={setHighScore}
+          setEnd={setEnd}
+          winScore={levelWin[level]}
         />
-      </main>
-      <Footer />
-    </div>
+      )}
+      {end && (
+        <EndModal score={score} onClick={restart} winScore={levelWin[level]} />
+      )}
+    </>
   );
 }
 
 export default Game;
-
-Game.propTypes = {
-  level: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-  setScore: PropTypes.func.isRequired,
-  highScore: PropTypes.number.isRequired,
-  setHighScore: PropTypes.func.isRequired,
-  setEnd: PropTypes.func.isRequired,
-  winScore: PropTypes.number.isRequired,
-};
