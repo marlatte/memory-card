@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Mode from './Mode';
 import StartModal from '../modals/Start';
 import EndModal from '../modals/End';
 
-function Game() {
+function Game({ allCharacters }) {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState('easy');
@@ -31,6 +32,7 @@ function Game() {
           setHighScore={setHighScore}
           setEnd={setEnd}
           winScore={levelWin[level]}
+          allCharacters={allCharacters}
         />
       )}
       {end && (
@@ -41,3 +43,13 @@ function Game() {
 }
 
 export default Game;
+
+Game.propTypes = {
+  allCharacters: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      img: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

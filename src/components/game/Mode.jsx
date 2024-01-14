@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
 
@@ -11,30 +11,10 @@ function Mode({
   setHighScore,
   setEnd,
   winScore,
+  allCharacters,
 }) {
   const [pastClickedIds, setPastClickedIds] = useState([]);
-  const [allCharacters, setAllCharacters] = useState('');
   const levelDisplay = { easy: 5, medium: 10, hard: 15 };
-
-  useEffect(() => {
-    async function getCharacters() {
-      const response = await fetch('https://api.tvmaze.com/shows/44458/cast');
-      const castArray = await response.json();
-
-      const charactersArray = castArray.map((item) => ({
-        name: item.character.name,
-        id: item.character.id,
-        img: item[item.character.id === 773340 ? 'person' : 'character'].image
-          .medium,
-      }));
-
-      setAllCharacters(charactersArray);
-    }
-
-    setTimeout(() => {
-      getCharacters();
-    }, 1000);
-  }, []);
 
   function getFirstOption() {
     const viableOptions = allCharacters.filter(
@@ -76,16 +56,12 @@ function Mode({
     <div className="game-container">
       <Header level={level} highScore={highScore} />
       <main>
-        {allCharacters ? (
-          <CurrentRound
-            characters={getCards()}
-            score={score}
-            winScore={winScore}
-            onClick={handleCardClick}
-          />
-        ) : (
-          <Loader />
-        )}
+        <CurrentRound
+          characters={getCards()}
+          score={score}
+          winScore={winScore}
+          onClick={handleCardClick}
+        />
       </main>
       <Footer />
     </div>
@@ -93,27 +69,6 @@ function Mode({
 }
 
 export default Mode;
-
-function Loader() {
-  return (
-    <div className="loader">
-      <div className="lds-spinner">
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-      </div>
-    </div>
-  );
-}
 
 Mode.propTypes = {
   level: PropTypes.string.isRequired,
@@ -123,4 +78,11 @@ Mode.propTypes = {
   setHighScore: PropTypes.func.isRequired,
   setEnd: PropTypes.func.isRequired,
   winScore: PropTypes.number.isRequired,
+  allCharacters: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      img: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
