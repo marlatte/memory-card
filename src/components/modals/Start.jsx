@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { capitalize } from 'lodash';
 
 function StartModal({ setLevel, setStart }) {
@@ -37,3 +37,8 @@ function StartModal({ setLevel, setStart }) {
 }
 
 export default StartModal;
+
+StartModal.propTypes = {
+  setLevel: PropTypes.func.isRequired,
+  setStart: PropTypes.func.isRequired,
+};

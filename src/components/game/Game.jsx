@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
@@ -75,3 +75,13 @@ function Game({
 }
 
 export default Game;
+
+Game.propTypes = {
+  level: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  setScore: PropTypes.func.isRequired,
+  highScore: PropTypes.number.isRequired,
+  setHighScore: PropTypes.func.isRequired,
+  setEnd: PropTypes.func.isRequired,
+  winScore: PropTypes.number.isRequired,
+};

@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import { capitalize } from 'lodash';
 
 export function Header({ level, highScore }) {
@@ -37,3 +37,8 @@ export function Footer() {
     </footer>
   );
 }
+
+Header.propTypes = {
+  level: PropTypes.string.isRequired,
+  highScore: PropTypes.number.isRequired,
+};

@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 
 function Card({ character, onClick }) {
   const nameArray = character.name.split(' ');
@@ -22,3 +22,12 @@ function Card({ character, onClick }) {
 }
 
 export default Card;
+
+Card.propTypes = {
+  character: PropTypes.PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
+};

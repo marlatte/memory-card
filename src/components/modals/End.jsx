@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 
 function EndModal({ score, winScore, onClick }) {
   const win = score === winScore;
@@ -16,3 +16,9 @@ function EndModal({ score, winScore, onClick }) {
 }
 
 export default EndModal;
+
+EndModal.propTypes = {
+  score: PropTypes.number.isRequired,
+  winScore: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
