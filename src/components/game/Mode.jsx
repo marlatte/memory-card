@@ -16,16 +16,26 @@ function Mode({
   const [pastClickedIds, setPastClickedIds] = useState([]);
   const levelDisplay = { easy: 5, medium: 10, hard: 15 };
 
-  function getFirstOption() {
-    const viableOptions = allCharacters.filter(
+  function getGoodOption() {
+    const goodOptions = allCharacters.filter(
       (char) => !pastClickedIds.includes(char.id)
     );
-    return viableOptions[Math.floor(Math.random() * viableOptions.length)];
+    return goodOptions[Math.floor(Math.random() * goodOptions.length)];
+  }
+
+  function getBadOption() {
+    const badOptions = allCharacters.filter((char) =>
+      pastClickedIds.includes(char.id)
+    );
+    return badOptions[Math.floor(Math.random() * badOptions.length)];
   }
 
   function getCards() {
     const preDisplay = [];
-    preDisplay.push(getFirstOption());
+    preDisplay.push(getGoodOption());
+    if (pastClickedIds.length > 2) {
+      preDisplay.push(getBadOption());
+    }
 
     while (preDisplay.length < levelDisplay[level]) {
       const num = Math.floor(Math.random() * 15);
@@ -40,7 +50,7 @@ function Mode({
   const handleCardClick = (e) => {
     const clickedEl = e.target.closest('[data-character-id]');
     clickedEl.blur();
-    const clickedId = clickedEl.dataset.characterId;
+    const clickedId = +clickedEl.dataset.characterId;
 
     if (!pastClickedIds.includes(clickedId)) {
       setPastClickedIds(pastClickedIds.concat(clickedId));
