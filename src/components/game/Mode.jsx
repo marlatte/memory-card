@@ -38,8 +38,9 @@ function Mode({
   }
 
   const handleCardClick = (e) => {
-    const clickedId = +e.target.closest('[data-character-id]').dataset
-      .characterId;
+    const clickedEl = e.target.closest('[data-character-id]');
+    clickedEl.blur();
+    const clickedId = clickedEl.dataset.characterId;
 
     if (!pastClickedIds.includes(clickedId)) {
       setPastClickedIds(pastClickedIds.concat(clickedId));
