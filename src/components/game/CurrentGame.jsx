@@ -3,7 +3,7 @@ import { useState } from 'react';
 import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
 
-function Mode({
+function CurrentGame({
   level,
   score,
   setScore,
@@ -16,25 +16,21 @@ function Mode({
   const [pastClickedIds, setPastClickedIds] = useState([]);
   const levelDisplay = { easy: 5, medium: 10, hard: 15 };
 
-  function getGoodOption() {
-    const goodOptions = allCharacters.filter(
-      (char) => !pastClickedIds.includes(char.id)
-    );
+  function getGoodOption(characters, pastIds) {
+    const goodOptions = characters.filter((char) => !pastIds.includes(char.id));
     return goodOptions[Math.floor(Math.random() * goodOptions.length)];
   }
 
-  function getBadOption() {
-    const badOptions = allCharacters.filter((char) =>
-      pastClickedIds.includes(char.id)
-    );
+  function getBadOption(characters, pastIds) {
+    const badOptions = characters.filter((char) => pastIds.includes(char.id));
     return badOptions[Math.floor(Math.random() * badOptions.length)];
   }
 
   function getCards() {
     const preDisplay = [];
-    preDisplay.push(getGoodOption());
+    preDisplay.push(getGoodOption(allCharacters, pastClickedIds));
     if (pastClickedIds.length > 2) {
-      preDisplay.push(getBadOption());
+      preDisplay.push(getBadOption(allCharacters, pastClickedIds));
     }
 
     while (preDisplay.length < levelDisplay[level]) {
@@ -79,9 +75,9 @@ function Mode({
   );
 }
 
-export default Mode;
+export default CurrentGame;
 
-Mode.propTypes = {
+CurrentGame.propTypes = {
   level: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
   setScore: PropTypes.func.isRequired,

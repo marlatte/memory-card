@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import Mode from './Mode';
+import CurrentGame from './CurrentGame';
 import StartModal from '../modals/Start';
 import EndModal from '../modals/End';
 
@@ -24,7 +24,7 @@ function Game({ allCharacters }) {
       {start ? (
         <StartModal setStart={setStart} setLevel={setLevel} />
       ) : (
-        <Mode
+        <CurrentGame
           level={level}
           score={score}
           setScore={setScore}

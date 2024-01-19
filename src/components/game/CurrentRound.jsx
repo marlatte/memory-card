@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
-import CardTable from './CardTable';
+import Card from './Card';
 
 function CurrentRound({ score, characters, onClick, winScore }) {
   return (
     <div className="current-round">
-      <CardTable characters={characters} onClick={onClick} />
+      <div className="card-table">
+        {characters.map((character) => (
+          <Card key={character.id} character={character} onClick={onClick} />
+        ))}
+      </div>
       <Score score={score} winScore={winScore} />
     </div>
   );
