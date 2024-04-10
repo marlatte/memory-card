@@ -2,12 +2,20 @@
 
 A game that tests your memory. Click each card only once! Get them all without doubling and you win!!
 
-Built with React, this project developed my skills with:
+## Demo
 
-- Hooks like `useEffect` and `useState`
+👉 [Live Preview](https://marlatte-memory-card.netlify.app/) 👈
+
+## Skills Demonstrated
+
+- React hooks like `useEffect` and `useState`
 - Web APIs
 - React development cycle
 
-Full requirements from The Odin Project can be [found here](https://www.theodinproject.com/lessons/node-path-react-new-memory-card).
+## Acknowledgements
 
-👉 [Live Demo](https://marlatte-memory-card.netlify.app/) 👈
+- [The Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-memory-card)
+
+## Built with
+
+[![My Skills](https://skillicons.dev/icons?i=react,js,vite,netlify,css)](https://skillicons.dev)
