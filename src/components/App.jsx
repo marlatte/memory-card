@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Game from './game/Game';
 
-const filterCharacterInfo = (characters) =>
-  characters.map((item) => ({
+const filterCharacterInfo = (castArray) =>
+  castArray.map((item) => ({
     name: item.character.name,
     id: item.character.id,
     img: item[item.character.id === 773340 ? 'person' : 'character'].image
@@ -30,9 +30,9 @@ function App() {
 
 function Loader() {
   return (
-    <div className="loader">
-      <div className="content">
-        <div className="lds-spinner">
+    <div className='loader'>
+      <div className='content'>
+        <div className='lds-spinner'>
           <div />
           <div />
           <div />

@@ -1,27 +1,35 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import CurrentRound from './CurrentRound';
 import { Header, Footer } from './HeaderFooter';
 
-function CurrentGame({
+export default function CurrentGame({
   level,
-  score,
-  setScore,
+  currentScore,
+  setCurrentScore,
   highScore,
   setHighScore,
   setEnd,
-  winScore,
+  scoreToWin,
   allCharacters,
+}: {
+  level: string;
+  currentScore: number;
+  setCurrentScore: (val: number) => void;
+  highScore: number;
+  setHighScore: (val: number) => void;
+  setEnd: (val: boolean) => void;
+  scoreToWin: number;
+  allCharacters: Character[];
 }) {
   const [pastClickedIds, setPastClickedIds] = useState([]);
-  const levelDisplay = { easy: 5, medium: 10, hard: 15 };
+  const numberOfOptions = { easy: 5, medium: 10, hard: 15 };
 
-  function getGoodOption(characters, pastIds) {
+  function getGoodOption(characters: Character[], pastIds: number[]) {
     const goodOptions = characters.filter((char) => !pastIds.includes(char.id));
     return goodOptions[Math.floor(Math.random() * goodOptions.length)];
   }
 
-  function getBadOption(characters, pastIds) {
+  function getBadOption(characters: Character[], pastIds: number[]) {
     const badOptions = characters.filter((char) => pastIds.includes(char.id));
     return badOptions[Math.floor(Math.random() * badOptions.length)];
   }
@@ -33,7 +41,9 @@ function CurrentGame({
       preDisplay.push(getBadOption(allCharacters, pastClickedIds));
     }
 
-    while (preDisplay.length < levelDisplay[level]) {
+    while (
+      preDisplay.length < numberOfOptions[level as keyof typeof numberOfOptions]
+    ) {
       const num = Math.floor(Math.random() * 15);
       if (!preDisplay.includes(allCharacters[num])) {
         preDisplay.push(allCharacters[num]);
@@ -43,30 +53,33 @@ function CurrentGame({
     return preDisplay.sort(() => 0.5 - Math.random());
   }
 
-  const handleCardClick = (e) => {
-    const clickedEl = e.target.closest('[data-character-id]');
+  const handleCardClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const target = e.target as HTMLElement;
+    const clickedEl = target.closest('[data-character-id]') as HTMLElement;
     clickedEl.blur();
     const clickedId = +clickedEl.dataset.characterId;
 
     if (!pastClickedIds.includes(clickedId)) {
       setPastClickedIds(pastClickedIds.concat(clickedId));
-      const newScore = score + 1;
-      setScore(newScore);
+      const newScore = currentScore + 1;
+      setCurrentScore(newScore);
       if (newScore > highScore) setHighScore(newScore);
-      if (newScore >= winScore) setEnd(true);
+      if (newScore >= scoreToWin) setEnd(true);
     } else {
       setEnd(true);
     }
   };
 
   return (
-    <div className="game-container">
+    <div className='game-container'>
       <Header level={level} highScore={highScore} />
       <main>
         <CurrentRound
           characters={getCards()}
-          score={score}
-          winScore={winScore}
+          currentScore={currentScore}
+          scoreToWin={scoreToWin}
           onClick={handleCardClick}
         />
       </main>
@@ -74,22 +87,3 @@ function CurrentGame({
     </div>
   );
 }
-
-export default CurrentGame;
-
-CurrentGame.propTypes = {
-  level: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-  setScore: PropTypes.func.isRequired,
-  highScore: PropTypes.number.isRequired,
-  setHighScore: PropTypes.func.isRequired,
-  setEnd: PropTypes.func.isRequired,
-  winScore: PropTypes.number.isRequired,
-  allCharacters: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
-      img: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};

@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import CurrentGame from './CurrentGame';
+import CurrentGame from './CurrentGame.tsx';
 import StartModal from '../modals/Start';
 import EndModal from '../modals/End';
 
 function Game({ allCharacters }) {
-  const [score, setScore] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState('easy');
   const [start, setStart] = useState(true);
   const [end, setEnd] = useState(false);
 
-  const levelWin = { easy: 7, medium: 11, hard: 15 };
+  const scoreToWin = { easy: 7, medium: 11, hard: 15 }[level];
 
   const restart = () => {
     setEnd(false);
-    setScore(0);
+    setCurrentScore(0);
     setStart(true);
   };
 
@@ -25,19 +25,19 @@ function Game({ allCharacters }) {
         <StartModal setStart={setStart} setLevel={setLevel} />
       ) : (
         <CurrentGame
-          level={level}
-          score={score}
-          setScore={setScore}
-          highScore={highScore}
-          setHighScore={setHighScore}
-          setEnd={setEnd}
-          winScore={levelWin[level]}
-          allCharacters={allCharacters}
+          {...{
+            level,
+            currentScore,
+            setCurrentScore,
+            highScore,
+            setHighScore,
+            setEnd,
+            allCharacters,
+            scoreToWin,
+          }}
         />
       )}
-      {end && (
-        <EndModal score={score} onClick={restart} winScore={levelWin[level]} />
-      )}
+      {end && <EndModal onClick={restart} {...{ currentScore, scoreToWin }} />}
     </>
   );
 }
