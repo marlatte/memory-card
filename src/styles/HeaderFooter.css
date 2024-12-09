@@ -1,12 +1,15 @@
 header {
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 
 header h1 {
   text-shadow: 3px 5px 5px black;
+  text-align: center;
 }
 
 .game-info {
@@ -60,5 +63,11 @@ footer .content {
 
   &:hover {
     transform: rotate(-360deg) scale(1.5);
+  }
+}
+
+@media (min-width: 620px) {
+  header {
+    justify-content: space-between;
   }
 }

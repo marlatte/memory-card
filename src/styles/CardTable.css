@@ -10,7 +10,6 @@
 .card {
   --radius: 10px;
 
-  width: 16vw;
   padding-bottom: 8px;
 
   display: flex;
@@ -45,4 +44,10 @@
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 16vw;
+  }
 }
