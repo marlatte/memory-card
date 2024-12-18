@@ -1,13 +1,16 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import CurrentGame from './CurrentGame.tsx';
-import StartModal from '../modals/Start';
-import EndModal from '../modals/End';
+import StartModal from '../modals/Start.tsx';
+import EndModal from '../modals/End.tsx';
 
-function Game({ allCharacters }) {
+export default function Game({
+  allCharacters,
+}: {
+  allCharacters: Character[];
+}) {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [level, setLevel] = useState('easy');
+  const [level, setLevel] = useState<Level>('easy');
   const [start, setStart] = useState(true);
   const [end, setEnd] = useState(false);
 
@@ -41,15 +44,3 @@ function Game({ allCharacters }) {
     </>
   );
 }
-
-export default Game;
-
-Game.propTypes = {
-  allCharacters: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired,
-      img: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};

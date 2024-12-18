@@ -1,6 +1,10 @@
 import { useState } from 'react';
-import CurrentRound from './CurrentRound';
-import { Header, Footer } from './HeaderFooter';
+import CurrentRound from './CurrentRound.tsx';
+import { Header, Footer } from './HeaderFooter.tsx';
+
+interface ClickedButton extends HTMLElement {
+  dataset: { characterId: string };
+}
 
 export default function CurrentGame({
   level,
@@ -21,7 +25,7 @@ export default function CurrentGame({
   scoreToWin: number;
   allCharacters: Character[];
 }) {
-  const [pastClickedIds, setPastClickedIds] = useState([]);
+  const [pastClickedIds, setPastClickedIds] = useState<number[]>([]);
   const numberOfOptions = { easy: 5, medium: 10, hard: 15 };
 
   function getGoodOption(characters: Character[], pastIds: number[]) {
@@ -57,7 +61,7 @@ export default function CurrentGame({
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const target = e.target as HTMLElement;
-    const clickedEl = target.closest('[data-character-id]') as HTMLElement;
+    const clickedEl = target.closest('[data-character-id]') as ClickedButton;
     clickedEl.blur();
     const clickedId = +clickedEl.dataset.characterId;
 

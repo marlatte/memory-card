@@ -4,14 +4,14 @@ export default function StartModal({
   setLevel,
   setStart,
 }: {
-  setLevel: (newLevel: string) => void;
+  setLevel: (newLevel: Level) => void;
   setStart: (showStartWindow: boolean) => void;
 }) {
   const handleLevelClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const target = e.target as HTMLElement;
-    const newLevel = target.id;
+    const newLevel = target.id as Level;
 
     setLevel(newLevel);
     setStart(false);
