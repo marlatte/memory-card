@@ -60,6 +60,3 @@ main {
   flex-direction: column;
   justify-content: center;
 }
-
-@media (prefers-color-scheme: light) {
-}
