@@ -8,7 +8,7 @@ function Score({
   scoreToWin: number;
 }) {
   return (
-    <div className='currentScore'>
+    <div className='current-score'>
       {currentScore} / {scoreToWin}
     </div>
   );

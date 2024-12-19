@@ -32,6 +32,7 @@
 
 .character-pic {
   width: 100%;
+  height: auto;
   border-radius: var(--radius) var(--radius) 0 0;
   border-bottom: 2px solid #cfcfcf;
 }
@@ -46,7 +47,7 @@
   text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .card {
     width: 16vw;
   }

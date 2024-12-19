@@ -16,7 +16,12 @@ export default function Card({
       data-character-id={character.id}
       {...{ onClick }}
     >
-      <img src={character.img} alt={character.name} className='character-pic' />
+      <img
+        src={character.img}
+        alt={character.name}
+        className='character-pic'
+        height={295}
+      />
       <div className='character-name'>
         <span className='first-name'>{firstName}</span>
         <span className='last-name'>{lastName}</span>
