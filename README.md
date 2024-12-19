@@ -18,4 +18,4 @@ A game that tests your memory. Click each card only once! Get them all without d
 
 ## Built with
 
-[![My Skills](https://skillicons.dev/icons?i=react,js,vite,netlify,css)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,ts,vite,netlify,css)](https://skillicons.dev)
