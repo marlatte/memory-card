@@ -10,20 +10,27 @@
   flex-direction: column;
   gap: var(--spacer);
 
+  margin: 20px;
   padding: var(--spacer);
   border: 2px solid white;
   border-radius: 10px;
   background-color: var(--card-bg);
+  box-shadow: 0 0 16px rgb(0, 0, 0);
 }
 
 .modal h1 {
-  font-size: 2.3rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .modal button {
   flex: 1;
-  padding: 6px;
-  font-size: 1.3rem;
+  padding: 8px;
+  font-size: 1.5rem;
+  background-color: rgb(43, 53, 43);
+  border: 2px solid rgba(189, 239, 189, 0.694);
+  border-radius: 8px;
+  color: rgb(226, 247, 226);
 }
 
 /* --------------------------- */
@@ -32,8 +39,8 @@
 
 .start p {
   margin: auto;
-  width: 530px;
-  font-size: 1.5rem;
+  max-width: 530px;
+  font-size: 1.2rem;
 }
 
 .start .ital {
@@ -42,7 +49,9 @@
 
 .start .buttons {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  column-gap: 12px;
+  row-gap: 16px;
 }
 
 /* --------------------------- */
@@ -66,4 +75,17 @@
 .end p {
   text-align: center;
   font-size: 1.3rem;
+}
+
+@media (min-width: 500px) {
+  .modal h1 {
+    font-size: 2.3rem;
+  }
+
+  .start p {
+    font-size: 1.5rem;
+  }
+  .start .buttons {
+    flex-direction: row;
+  }
 }
